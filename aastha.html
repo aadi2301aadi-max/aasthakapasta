@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Aastha ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-pink: #fff0f3;
+            --dark-pink: #c9184a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--soft-pink);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Heart & Rose Petal Animation */
+        .particle {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Container & Slides */
+        .container {
+            width: 90%;
+            max-width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide { display: none; animation: fadeIn 0.8s ease-in-out; }
+        .active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; color: var(--primary-pink); font-size: 2.5rem; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.6; font-size: 1.1rem; }
+        
+        .btn-next {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-next:hover { background: var(--dark-pink); transform: scale(1.05); }
+
+        .list-container { text-align: left; background: #fff5f6; padding: 15px; border-radius: 15px; margin: 15px 0; }
+        .list-item { margin: 10px 0; display: flex; align-items: center; gap: 10px; }
+
+        .choice-btns { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+        .yes-btn { background: #2ecc71; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .no-btn { background: #e74c3c; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+
+        .footer-note { font-size: 0.8rem; color: #888; margin-top: 20px; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <!-- Falling Particles Container -->
+    <div id="particles"></div>
+
+    <div class="container">
+        
+        <!-- Slide 1: Intro -->
+        <div class="slide active" id="slide1">
+            <h1>Suno Aastha... ❤️</h1>
+            <p>Hum relationship mein toh aa gaye hain, par ek cheez hamesha se adhuri thi.</p>
+            <p>Maine tumhe kabhi dhang se propose hi nahi kiya... toh aaj main sab kuch official karna chahta hoon.</p>
+            <button class="btn-next" onclick="nextSlide(2)">Aage Suno...</button>
+        </div>
+
+        <!-- Slide 2: Pros -->
+        <div class="slide" id="slide2">
+            <h1>Why I Love You? ✨</h1>
+            <div class="list-container">
+                <div class="list-item">🌸 Tumhari wo cute si smile</div>
+                <div class="list-item">🗣️ Tumhara nonstop yapping (jo mujhe best lagta hai)</div>
+                <div class="list-item">🎤 Tumhari pyaari si awaz</div>
+                <div class="list-item">💖 Tumhara itna understanding hona</div>
+            </div>
+            <p>Tum sach mein ek angel ho!</p>
+            <button class="btn-next" onclick="nextSlide(3)">Lekin... Thoda ruko</button>
+        </div>
+
+        <!-- Slide 3: Her Cons -->
+        <div class="slide" id="slide3">
+            <h1>Thodi Sudhar Jao 😤</h1>
+            <div class="list-container">
+                <div class="list-item">😡 Bina bataye kahin bhi chale jaana</div>
+                <div class="list-item">😴 Good Night bolna bhool jaana (Ispe bahut gussa aata hai!)</div>
+                <div class="list-item">🙄 Thodi zyada hi ziddi ho kabhi kabhi</div>
+            </div>
+            <button class="btn-next" onclick="nextSlide(4)">Ab meri burai suno...</button>
+        </div>
+
+        <!-- Slide 4: His Cons -->
+        <div class="slide" id="slide4">
+            <h1>Main Kaisa Hoon? 😶</h1>
+            <p>Main perfect nahi hoon, Aastha. Mere andar bhi bahut kamiya hain:</p>
+            <div class="list-container">
+                <div class="list-item">😟 Main bahut insecure feel karne lagta hoon</div>
+                <div class="list-item">😒 Tumhare kuch male friends mujhe bilkul pasand nahi</div>
+                <div class="list-item">🧠 Overthink bahut zyada karta hoon</div>
+                <div class="list-item">🔒 Thoda sa possessive bhi hoon tumhe lekar</div>
+            </div>
+            <button class="btn-next" onclick="nextSlide(5)">The Truth...</button>
+        </div>
+
+        <!-- Slide 5: The Proposal -->
+        <div class="slide" id="slide5">
+            <h1>Official Banoge? 💍</h1>
+            <p>Maine upar jo bhi kaha wo mera sach hai. Main jaisa hoon, tumhare saamne hoon.</p>
+            <p style="font-weight: 600; color: var(--dark-pink); font-size: 1.3rem;">
+                Aastha, Kya tum is rishte ko ek official naam dogi? Will you be my girlfriend forever? ❤️
+            </p>
+            <div class="choice-btns">
+                <button class="yes-btn" onclick="nextSlide(7)">Haan, Bilkul! 😍</button>
+                <button class="no-btn" onclick="nextSlide(6)">Nahi...</button>
+            </div>
+        </div>
+
+        <!-- Slide 6: If No -->
+        <div class="slide" id="slide6">
+            <h1>I Respect You... ✨</h1>
+            <p>Koi baat nahi Aastha. Mujhe bura nahi laga. Kam se kam tumne sach toh kaha.</p>
+            <p>Acha laga tumse baat karke, tum itni understanding ho uske liye Thank You! Hum dost toh rahenge hi. 😊</p>
+        </div>
+
+        <!-- Slide 7: If Yes -->
+        <div class="slide" id="slide7">
+            <h1>I Love You So Muchhh! ❤️</h1>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1ZHJueG50M3R6bmJ3eGZ3eGZ3eGZ3eGZ3eGZ3eGZ3eGZ3Jm1wPTYmZ3c9cw/L40p3N89V5K6U/giphy.gif" width="150" style="border-radius: 20px;">
+            <p>Aaj se tum officially meri ho! Main promise karta hoon ki main tumhe hamesha khush rakhne ki koshish karunga. Best day ever! 😍💍</p>
+        </div>
+
+        <!-- Closing Note (Shown on slide 5) -->
+        <p class="footer-note" id="finalNote" style="display:none;">Maine jo kuch bhi kaha ye mera sach hai. Aaram se socho, phir faisla lo. Good Night! 🌙</p>
+
+    </div>
+
+    <script>
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+            
+            if(n === 5) {
+                document.getElementById('finalNote').style.display = 'block';
+            } else {
+                document.getElementById('finalNote').style.display = 'none';
+            }
+        }
+
+        // Particle Shower Effect
+        function createParticle() {
+            const particlesContainer = document.getElementById('particles');
+            const particle = document.createElement('div');
+            const isHeart = Math.random() > 0.5;
+            
+            particle.innerHTML = isHeart ? '❤️' : '🌹';
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            particle.style.duration = (Math.random() * 3 + 2) + 's';
+            particle.style.opacity = Math.random();
+            
+            particlesContainer.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
